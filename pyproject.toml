@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assistant"
+version = "1.0.0"
+
+[project.scripts]
+ssay = "Ressbary_pi_assistant.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
