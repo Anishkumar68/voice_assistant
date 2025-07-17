@@ -3,9 +3,12 @@ from src.vector_db import vector_db_retrieval as vector_retrieval
 from src.llm_handler import query_llm
 import time
 
+# from src.speak import speak
+
 
 def main():
     print("🎙️ Voice Assistant is running... Say something!")
+    # speak(text="Hello! I am ready to assist you.")
 
     while True:
         user_query = input("🗣️ You: ")  # Simulated user input for testing

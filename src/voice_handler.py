@@ -2,10 +2,14 @@ import os
 import wave
 import json
 import pyaudio
+
 import pyttsx3
 from vosk import Model, KaldiRecognizer
+
 import asyncio
 import edge_tts
+
+# from src.speak import speak as sp
 
 
 # from playsound import playsound
@@ -76,26 +80,29 @@ def listen_from_file(file_path):
     return " ".join(results).strip()
 
 
-def speak(text):
-    """Speaks a text string using espeak."""
-    os.system(f'espeak "{text}"')
-
-
-def speak(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+# sp(text="Hello! I am ready to assist you.")
 
 
 # def speak(text):
-#     asyncio.run(speak_async(text))
+#     """Speaks a text string using espeak."""
+#     os.system(f'espeak "{text}"')
 
 
-# async def speak_async(text):
-#     filename = f"temp_{uuid.uuid4()}.mp3"
-#     communicate = edge_tts.Communicate(text=text, voice="en-US-JennyNeural")
-#     await communicate.save(filename)
-#     os.system(filename)
+# def speak(text):
+#     engine = pyttsx3.init()
+#     engine.say(text)
+#     engine.runAndWait()
+
+
+def speak(text):
+    asyncio.run(speak_async(text))
+
+
+async def speak_async(text):
+    filename = f"temp_{uuid.uuid4()}.mp3"
+    communicate = edge_tts.Communicate(text=text, voice="en-US-JennyNeural")
+    await communicate.save(filename)
+    os.system(filename)
 
 
 # async def speak_async(text):
