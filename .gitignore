@@ -10,3 +10,13 @@ venv/
 env/
 *.env
 *.venv
+
+
+alex-tts/
+
+*.mp3
+*.wav
+
+alex-466306-0af040ba4029.json
+
+*.pdf

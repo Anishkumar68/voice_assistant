@@ -1,21 +1,12 @@
-from openai import OpenAI as openai
-from dotenv import load_dotenv
-
-load_dotenv()
-
-import os
-
-client = openai(
-    api_key=os.environ["OPENAI_API_KEY"],  # this is also the default, it can be omitted
-)
-
-
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
+# Load environment variables
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Optional if using .env
+
+# Initialize the OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def query_llm(prompt: str, model="gpt-4o", temperature=0.4, max_tokens=1000):

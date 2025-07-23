@@ -3,17 +3,16 @@ import wave
 import json
 import pyaudio
 
-import pyttsx3
+# import pyttsx3
 from vosk import Model, KaldiRecognizer
 
-import asyncio
-import edge_tts
+# import asyncio
+# import edge_tts
 
 # from src.speak import speak as sp
 
-
 # from playsound import playsound
-import uuid
+# import uuid
 
 # Set model path
 VOSK_MODEL_PATH = os.path.join("Models", "vosk-model-small-en-us-0.15")
@@ -80,6 +79,12 @@ def listen_from_file(file_path):
     return " ".join(results).strip()
 
 
+def listen():
+    """Main interface: records if file doesn't exist, then transcribes."""
+    record_audio_to_file(AUDIO_FILE)
+    return listen_from_file(AUDIO_FILE)
+
+
 # sp(text="Hello! I am ready to assist you.")
 
 
@@ -94,15 +99,15 @@ def listen_from_file(file_path):
 #     engine.runAndWait()
 
 
-def speak(text):
-    asyncio.run(speak_async(text))
+# def speak(text):
+#     asyncio.run(speak_async(text))
 
 
-async def speak_async(text):
-    filename = f"temp_{uuid.uuid4()}.mp3"
-    communicate = edge_tts.Communicate(text=text, voice="en-US-JennyNeural")
-    await communicate.save(filename)
-    os.system(filename)
+# async def speak_async(text):
+#     filename = f"temp_{uuid.uuid4()}.mp3"
+#     communicate = edge_tts.Communicate(text=text, voice="en-US-JennyNeural")
+#     await communicate.save(filename)
+#     os.system(filename)
 
 
 # async def speak_async(text):
@@ -115,9 +120,3 @@ async def speak_async(text):
 
 # def speak(text):
 #     asyncio.run(speak_async(text))
-
-
-def listen():
-    """Main interface: records if file doesn't exist, then transcribes."""
-    record_audio_to_file(AUDIO_FILE)
-    return listen_from_file(AUDIO_FILE)
